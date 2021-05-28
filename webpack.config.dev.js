@@ -8,6 +8,7 @@ const { getEntry, MultipleHtmlWebpackPlugin, getAssets } = require('./scripts/ut
 
 module.exports = {
     mode: 'development',
+    target: 'web',
     devtool: 'source-map',
     context: path.resolve(__dirname, 'src'),
     entry: getEntry(config.entries),
