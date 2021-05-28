@@ -6,7 +6,7 @@ describe('Navigation', () => {
     })
 
     it('is home', () => {
-        cy.get('header h1').should('contain', 'Site starter')
+        cy.get('header h1').should('contain', 'Express MVC')
         cy.location('pathname').should('be', '/')
     })
 

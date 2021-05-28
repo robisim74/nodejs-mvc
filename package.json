@@ -1,6 +1,6 @@
 {
-  "name": "site-starter",
-  "version": "0.6.0",
+  "name": "express-mvc",
+  "version": "0.1.0",
   "description": "Build a site with Webpack, Babel, TypeScript or ES6, critical CSS, differential loading & Web Components",
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.config.dev.js",
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/robisim74/site-starter"
+    "url": "https://github.com/robisim74/express-mvc"
   },
   "bugs": {
-    "url": "https://github.com/robisim74/site-starter/issues"
+    "url": "https://github.com/robisim74/express-mvc/issues"
   },
-  "homepage": "https://github.com/robisim74/site-starter",
+  "homepage": "https://github.com/robisim74/express-mvc",
   "keywords": [
     "webpack",
     "babel",
