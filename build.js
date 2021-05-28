@@ -6,7 +6,7 @@ const { createWriteStream } = require('fs');
 const { SitemapStream } = require('sitemap');
 
 const webpackCompiler = require('./scripts/webpack.compiler');
-const { modernConfig, legacyConfig } = require('./webpack.config.prod');
+const webpackConfig = require('./webpack.config.prod');
 const config = require('./config');
 const { getHtmlSourceFiles, getPaths } = require('./scripts/utils');
 
@@ -14,10 +14,8 @@ async function build() {
     log(chalk.blue('Start building...'));
 
     // Runs webpack
-    log(chalk.blue('Run webpack es2015 version'));
-    await webpackCompiler(modernConfig);
-    log(chalk.blue('\nRun webpack es5 version'));
-    await webpackCompiler(legacyConfig);
+    log(chalk.blue('Run webpack'));
+    await webpackCompiler(webpackConfig);
 
     // Runs critical
     // https://github.com/addyosmani/critical

@@ -4,37 +4,31 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = require('./config');
-const { getModernEntry, MultipleModernHtmlWebpackPlugin, getAssets } = require('./scripts/utils');
+const { getEntry, MultipleHtmlWebpackPlugin, getAssets } = require('./scripts/utils');
 
 module.exports = {
     mode: 'development',
     devtool: 'source-map',
     context: path.resolve(__dirname, 'src'),
-    entry: getModernEntry(config.entries),
+    entry: getEntry(config.entries),
     output: {
         path: path.resolve(__dirname, config.buildDir),
         filename: 'js/[name].js',
         publicPath: ''
     },
     optimization: {
-        noEmitOnErrors: true
+        emitOnErrors: false
     },
     resolve: {
         extensions: ['.ts', '.js'],
     },
-    devServer: {
-        hot: true
-    },
     plugins: [
-        new webpack.DefinePlugin({
-            envName: JSON.stringify('modern')
-        }),
         new CopyWebpackPlugin({
             patterns: [
                 ...getAssets(config.assets)
             ]
         }),
-        ...MultipleModernHtmlWebpackPlugin(config.entries)
+        ...MultipleHtmlWebpackPlugin(config.entries)
     ],
     module: {
         rules: [
@@ -57,10 +51,7 @@ module.exports = {
                 test: /\.(js|ts)$/,
                 include: path.resolve(__dirname, 'src'),
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        envName: 'modern' // Points to env.modern in babel.config.js
-                    }
+                    loader: 'babel-loader'
                 }
             },
             {
@@ -68,6 +59,7 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader?sourceMap=true',
+                    'postcss-loader',
                     'resolve-url-loader',
                     'sass-loader'
                 ]

@@ -9,13 +9,9 @@
 * _Babel_ & _webpack_
 * _TypeScript_ & ES6
 * CSS, _SASS_ & _Autoprefixer_
-* _ESLint_
 * Critical CSS
-* Differential loading
-* One page or Multi page
-* Web Components
+* _ESLint_
 * Sitemap
-* End-to-end testing with _Cypress_
 
 
 ## Contents

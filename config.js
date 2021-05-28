@@ -2,7 +2,7 @@
  * Site configuration
  */
 const config = {
-    buildDir: 'build',
+    buildDir: 'dist',
     /**
      * Entry points as in src folder
      */
@@ -18,17 +18,9 @@ const config = {
         '404.html'
     ],
     /**
-     * Polyfills for legacy build
-     */
-    polyfills: [
-        'core-js/modules/es.promise',
-        'core-js/modules/es.array.iterator',
-        '@webcomponents/webcomponentsjs'
-    ],
-    /**
      * Production base href
      */
-    baseHref: 'https://robisim74.github.io/express-mvc/',
+    baseHref: '/',
     /**
      * For sitemap URLs
      */

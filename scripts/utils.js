@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = require('../config');
 
-const getModernEntry = (entries) => {
+const getEntry = (entries) => {
     const entry = {};
     for (const value of entries) {
         entry[value.name] = [value.module, value.style];
@@ -12,15 +12,7 @@ const getModernEntry = (entries) => {
     return entry;
 };
 
-const getLegacyEntry = (entries) => {
-    const entry = {};
-    for (const value of entries) {
-        entry[value.name] = [...config.polyfills, value.module];
-    }
-    return entry;
-};
-
-const MultipleModernHtmlWebpackPlugin = (entries, baseHref = '/') => {
+const MultipleHtmlWebpackPlugin = (entries, baseHref = '/') => {
     return entries.map(value =>
         new HtmlWebpackPlugin({
             filename: path.resolve(__dirname, `../${config.buildDir}/${value.template}`),
@@ -28,17 +20,6 @@ const MultipleModernHtmlWebpackPlugin = (entries, baseHref = '/') => {
             chunks: [value.name],
             favicon: path.resolve(__dirname, '../src/favicon.ico'),
             base: baseHref,
-            minify: false
-        })
-    );
-};
-
-const MultipleLegacyHtmlWebpackPlugin = (entries) => {
-    return entries.map(value =>
-        new HtmlWebpackPlugin({
-            filename: path.resolve(__dirname, `../${config.buildDir}/${value.template}`),
-            template: path.resolve(__dirname, `../${config.buildDir}/${value.template}`), // Points to outDir
-            chunks: [value.name],
             minify: false
         })
     );
@@ -66,10 +47,8 @@ const getAssets = (assets) => {
 };
 
 module.exports = {
-    getModernEntry,
-    getLegacyEntry,
-    MultipleModernHtmlWebpackPlugin,
-    MultipleLegacyHtmlWebpackPlugin,
+    getEntry,
+    MultipleHtmlWebpackPlugin,
     getHtmlSourceFiles,
     getPaths,
     getAssets
