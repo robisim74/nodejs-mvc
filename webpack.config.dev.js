@@ -33,7 +33,8 @@ module.exports = {
         // Start nodemon
         new NodemonPlugin({
             script: `./${config.buildDir}/app.js`,
-            watch: 'src'
+            watch: 'src',
+            ext: 'ts'
         })
     ],
     module: {

@@ -1,16 +1,16 @@
 # Express MVC
 ![Node.js CI](https://github.com/robisim74/express-mvc/workflows/Node.js%20CI/badge.svg)
-> Build a site with Webpack, Babel, TypeScript or ES6, critical CSS, differential loading & Web Components. SEO & performance friendly
-
-[Live example]( https://robisim74.github.io/express-mvc/)
+> Build an Express MVC web app with Webpack, Babel, TypeScript or ES6, critical CSS. SEO & performance friendly
 
 ## Features
 
-* _Babel_ & _webpack_
+* _Express_ & MVC pattern
+* _Handlebars_ view engine
+* _Babel_ & _webpack_ with dev server
 * _TypeScript_ & ES6
 * CSS, _SASS_ & _Autoprefixer_
 * Critical CSS
-* _ESLint_
+* _Tailwind_
 * Sitemap
 
 

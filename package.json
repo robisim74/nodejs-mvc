@@ -1,11 +1,11 @@
 {
   "name": "express-mvc",
   "version": "0.1.0",
-  "description": "Build a site with Webpack, Babel, TypeScript or ES6, critical CSS, differential loading & Web Components",
+  "description": "Build an Express MVC web app with Webpack, Babel, TypeScript or ES6, critical CSS",
   "scripts": {
     "start": "node dist/app.js",
     "dev": "rimraf dist && npm run build:watch",
-    "build": "rimraf dist && tsc && node build.js",
+    "build": "rimraf dist && tsc && cross-env NODE_ENV=production node build.js",
     "build:watch": "concurrently \"tsc --watch\" \"webpack serve --config webpack.config.dev.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,11 +23,9 @@
     "es6",
     "typescript",
     "critical css",
-    "differential loading",
-    "multi page",
-    "web components",
-    "site",
-    "starter"
+    "node",
+    "express",
+    "MVC"
   ],
   "author": "Roberto Simonetti",
   "license": "MIT",
@@ -70,6 +68,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "hbs": "^4.1.2"
+    "hbs": "^4.1.2",
+    "tailwindcss": "^2.1.2"
   }
 }
