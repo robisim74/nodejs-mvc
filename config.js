@@ -7,14 +7,13 @@ const config = {
      * Entry points as in src folder
      */
     entries: [
-        { name: 'home', template: './index.html', module: './index.ts', style: './index.scss', path: '' },
+        { name: 'index', template: './views/index.html', module: './index.ts', style: './index.scss', path: '' },
     ],
     /**
      * Files or directories to copy from src to the build directory
      */
     assets: [
-        'assets',
-        '404.html'
+        'assets'
     ],
     /**
      * Production base href

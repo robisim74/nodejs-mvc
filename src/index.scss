@@ -1,1 +1,13 @@
-@import "./styles.scss";
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./assets/fonts/Lato-Regular.ttf") format("woff");
+    font-display: swap;
+}
+
+body {
+    color: #ffffff;
+    background-color: #121212;
+    font-family: "Lato", sans-serif;
+}

@@ -1,7 +1,7 @@
 const path = require('path');
-const webpack = require('webpack');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const NodemonPlugin = require('nodemon-webpack-plugin');
 
 const config = require('./config');
 const { getEntry, MultipleHtmlWebpackPlugin, getAssets } = require('./scripts/utils');
@@ -12,9 +12,9 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: getEntry(config.entries),
     output: {
-        path: path.resolve(__dirname, config.buildDir),
+        path: path.resolve(__dirname, `${config.buildDir}/public`),
         filename: 'js/[name].js',
-        publicPath: ''
+        publicPath: './'
     },
     optimization: {
         emitOnErrors: false
@@ -28,19 +28,15 @@ module.exports = {
                 ...getAssets(config.assets)
             ]
         }),
-        ...MultipleHtmlWebpackPlugin(config.entries)
+        ...MultipleHtmlWebpackPlugin(config.entries),
+        // Start nodemon
+        new NodemonPlugin({
+            script: `./${config.buildDir}/app.js`,
+            watch: 'src'
+        })
     ],
     module: {
         rules: [
-            {
-                test: /\.(js|ts)$/,
-                include: path.resolve(__dirname, 'src'),
-                enforce: 'pre',
-                loader: 'eslint-loader',
-                options: {
-                    emitWarning: true,
-                },
-            },
             {
                 test: /\.(js|ts)$/,
                 include: path.resolve(__dirname, 'src'),
@@ -88,5 +84,13 @@ module.exports = {
         colors: true,
         modules: false,
         entrypoints: false
-    }
+    },
+    devServer: {
+        hot: true,
+        proxy: {
+            '': 'http://localhost:8080', // content base
+        },
+        port: 3000,
+        writeToDisk: true, // for express
+    },
 };

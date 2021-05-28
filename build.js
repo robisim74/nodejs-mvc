@@ -23,10 +23,10 @@ async function build() {
     for (const source of getHtmlSourceFiles(config.entries)) {
         critical.generate({
             inline: true,
-            base: config.buildDir,
-            src: source,
+            base: `${config.buildDir}/public/`,
+            src: `../${source}`,
             target: {
-                html: source
+                html: `../${source}`
             },
             minify: true,
             extract: true,

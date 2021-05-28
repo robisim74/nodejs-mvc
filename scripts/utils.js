@@ -17,7 +17,6 @@ const MultipleHtmlWebpackPlugin = (entries, baseHref = '/') => {
         new HtmlWebpackPlugin({
             filename: path.resolve(__dirname, `../${config.buildDir}/${value.template}`),
             template: path.resolve(__dirname, `../src/${value.template}`),
-            chunks: [value.name],
             favicon: path.resolve(__dirname, '../src/favicon.ico'),
             base: baseHref,
             minify: false
@@ -41,7 +40,7 @@ const getAssets = (assets) => {
     return assets.map(asset => {
         return {
             from: path.resolve(__dirname, `../src/${asset}`),
-            to: asset
+            to:  path.resolve(__dirname, `../${config.buildDir}/public/${asset}`),
         };
     });
 };

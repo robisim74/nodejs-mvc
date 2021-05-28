@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -19,7 +18,7 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: getEntry(config.entries),
     output: {
-        path: path.resolve(__dirname, config.buildDir),
+        path: path.resolve(__dirname, `${config.buildDir}/public`),
         filename: `js/${FILENAME}.js`,
         chunkFilename: `js/${FILENAME}.js`,
         publicPath: './'
