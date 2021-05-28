@@ -6,7 +6,7 @@
     "start": "webpack-dev-server --open --config webpack.config.dev.js",
     "build": "node build.js",
     "test": "concurrently \"webpack-dev-server --config webpack.config.dev.js\" \"cypress open\"",
-    "test:ci": "cypress run"
+    "test:ci": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
