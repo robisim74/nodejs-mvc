@@ -1,6 +1,7 @@
 const path = require('path');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 
 const config = require('./config');
@@ -30,6 +31,9 @@ module.exports = {
             ]
         }),
         ...MultipleHtmlWebpackPlugin(config.entries),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css'
+        }),
         // Start nodemon
         new NodemonPlugin({
             script: `./${config.buildDir}/app.js`,
@@ -53,13 +57,24 @@ module.exports = {
                 }
             },
             {
-                test: /\.s?css$/i,
+                test: /\.s?css/i,
                 use: [
-                    'style-loader',
-                    'css-loader?sourceMap=true',
-                    'postcss-loader',
-                    'resolve-url-loader',
-                    'sass-loader'
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'postcss-loader' // Autoprefixer
+                    },
+                    {
+                        loader: "resolve-url-loader",
+                        options: { sourceMap: true } // source-maps required for loaders preceding resolve-url-loader
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: { sourceMap: true }
+                    }
                 ]
             },
             {
@@ -67,7 +82,8 @@ module.exports = {
                 use: {
                     loader: 'file-loader',
                     options: {
-                        name: '[path][name].[ext]'
+                        name: '[path][name].[ext]',
+                        publicPath: '../'
                     }
                 }
             },
@@ -76,7 +92,8 @@ module.exports = {
                 use: {
                     loader: 'file-loader',
                     options: {
-                        name: '[path][name].[ext]'
+                        name: '[path][name].[ext]',
+                        publicPath: '../'
                     }
                 }
             },
