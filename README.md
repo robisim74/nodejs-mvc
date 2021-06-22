@@ -24,7 +24,7 @@
 Download the code & configure the project in `config.js` file.
 
 ### Installation
-For development, _Node.js_ 12 or higher is required.
+_Node.js_ 12 or higher is required.
 
 ```Shell
 npm install
@@ -32,12 +32,7 @@ npm install
 
 ### Start DevServer
 ```Shell
-npm start
-```
-
-### Test
-```Shell
-npm test
+npm run dev
 ```
 
 ### Build
@@ -45,34 +40,32 @@ npm test
 npm run build
 ```
 
-![build](https://user-images.githubusercontent.com/14012361/103531475-b17a4b00-4e89-11eb-99d1-6679d08bde4c.png)
-
 
 ## <a name="2"></a>Project structure
-- Site
+- App
     - **src/** source code folder
-    - **config.js** site configuration
+        - **src/app.ts** Express entry point
+        - **src/app.controller.ts** controllers file
+        - **src/views/** views folder
+        - **src/index.ts** client ts file for `views/index.html`
+        - **src/index.scss** client css file for `views/index.html`
+    - **config.js** app configuration
     
 - Scripts & configuration files
     - **build.js** building process
-        - runs _webpack_ to generate es2015 bundles
-        - runs _webpack_ to generate es5 bundles
+        - runs _webpack_ to generate client bundles
         - runs _critical_ to inline critical CSS
         - runs _sitemap_ to generate `sitemap.xml`
     - **scripts/** scripts used by the building process
     - **babel.config.js** _Babel_ configuration
-        - _modern_ env for development & production (es2015)
-        - _legacy_ env for production (es5)
     - **webpack.config.dev.js** _webpack_ configuration for development
-    - **webpack.config.prod.js** _webpack_ configurations for building es2015 & es5 bundles
-    - **.browserslistrc** target browsers for es5 bundles & _Autoprefixer_
-    - **postcss.config.js** _PostCSS_ configuration file to use _Autoprefixer_
-    - **.eslintrc.js** _ESLint_ configuration file
-    - **tsconfig** _TypeScript_ configuration file
+    - **webpack.config.prod.js** _webpack_ configuration for building client bundles
+    - **.browserslistrc** target browsers for _Autoprefixer_
+    - **postcss.config.js** _PostCSS_ configuration file to use _Autoprefixer_ & _Tailwind_
+    - **tailwind.config.js** _Tailwind_ configuration
+    - **tsconfig** _TypeScript_ configuration file to compile Express
     - **package.json** _npm_ options & scripts
-- Testing:
-    - **cypress/** _Cypress_ folder with test files
-    - **cypress.json** _Cypress_ configuration file
+
 
 ## <a name="3"></a>What's new
 You can find template changes [here](https://github.com/robisim74/express-mvc/releases).

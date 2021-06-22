@@ -1,5 +1,5 @@
 /**
- * Site configuration
+ * App configuration
  */
 const config = {
     buildDir: 'dist',
