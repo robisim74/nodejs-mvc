@@ -1,6 +1,6 @@
-# Express MVC
-![Node.js CI](https://github.com/robisim74/express-mvc/workflows/Node.js%20CI/badge.svg)
-> Build an Express MVC web app with Webpack, Babel, TypeScript or ES6, critical CSS. SEO & performance friendly
+# Node.js MVC
+![Node.js CI](https://github.com/robisim74/nodejs-mvc/workflows/Node.js%20CI/badge.svg)
+> Build a Node.js MVC web app with Webpack, Babel, TypeScript or ES6, critical CSS. SEO & performance friendly
 
 ## Features
 
@@ -68,7 +68,7 @@ npm run build
 
 
 ## <a name="3"></a>What's new
-You can find template changes [here](https://github.com/robisim74/express-mvc/releases).
+You can find template changes [here](https://github.com/robisim74/nodejs-mvc/releases).
 
 
 ## License

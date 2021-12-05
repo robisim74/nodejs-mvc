@@ -6,6 +6,6 @@ import { Request, Response } from "express";
  */
 export const index = (req: Request, res: Response) => {
     res.render('index', {
-        name: 'Express MVC'
+        name: 'Node.js MVC'
     });
 };

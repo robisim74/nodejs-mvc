@@ -1,7 +1,7 @@
 {
-  "name": "express-mvc",
+  "name": "nodejs-mvc",
   "version": "0.1.0",
-  "description": "Build an Express MVC web app with Webpack, Babel, TypeScript or ES6, critical CSS",
+  "description": "Build a Node.js MVC web app with Webpack, Babel, TypeScript or ES6, critical CSS",
   "scripts": {
     "start": "node dist/app.js",
     "dev": "rimraf dist && npm run build:watch",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/robisim74/express-mvc"
+    "url": "https://github.com/robisim74/nodejs-mvc"
   },
   "bugs": {
-    "url": "https://github.com/robisim74/express-mvc/issues"
+    "url": "https://github.com/robisim74/nodejs-mvc/issues"
   },
-  "homepage": "https://github.com/robisim74/express-mvc",
+  "homepage": "https://github.com/robisim74/nodejs-mvc",
   "keywords": [
     "webpack",
     "babel",
