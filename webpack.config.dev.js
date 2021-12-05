@@ -79,23 +79,11 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpe?g|gif)$/i,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[path][name].[ext]',
-                        publicPath: '../'
-                    }
-                }
+                type: 'asset/resource'
             },
             {
                 test: /\.eot$|\.woff$|\.woff2$|\.ttf$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[path][name].[ext]',
-                        publicPath: '../'
-                    }
-                }
+                type: 'asset/inline'
             },
         ]
     },
@@ -110,6 +98,8 @@ module.exports = {
             '': 'http://localhost:8080', // content base
         },
         port: 3000,
-        writeToDisk: true, // for express
+        devMiddleware: {
+            writeToDisk: true, // for express
+        },
     },
 };

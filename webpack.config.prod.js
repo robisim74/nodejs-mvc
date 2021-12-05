@@ -75,33 +75,11 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpe?g|gif)$/i,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 10000,
-                            // Fallback
-                            fallback: require.resolve('file-loader'),
-                            name: '[path][name].[ext]',
-                            publicPath: '../'
-                        }
-                    }
-                ]
+                type: 'asset/inline'
             },
             {
                 test: /\.eot$|\.woff$|\.woff2$|\.ttf$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 10000,
-                            // Fallback
-                            fallback: require.resolve('file-loader'),
-                            name: '[path][name].[ext]',
-                            publicPath: '../'
-                        }
-                    }
-                ]
+                type: 'asset/inline'
             },
         ]
     },

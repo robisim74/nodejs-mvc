@@ -28,7 +28,6 @@ async function build() {
             target: {
                 html: `../${source}`
             },
-            minify: true,
             extract: true,
             dimensions: [{
                 height: 500,
