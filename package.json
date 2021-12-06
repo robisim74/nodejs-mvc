@@ -1,12 +1,12 @@
 {
   "name": "nodejs-mvc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Build a Node.js MVC web app with Webpack, Babel, TypeScript or ES6, critical CSS",
   "scripts": {
     "start": "node dist/app.js",
     "dev": "rimraf dist && npm run build:watch",
-    "build": "rimraf dist && tsc && cross-env NODE_ENV=production node build.js",
-    "build:watch": "concurrently \"tsc --watch\" \"webpack serve --config webpack.config.dev.js\"",
+    "build": "rimraf dist && cross-env NODE_ENV=production rollup -c rollup.config.js && cross-env NODE_ENV=production node build.js",
+    "build:watch": "concurrently \"rollup -c rollup.config.js -w\" \"webpack serve --config webpack.config.dev.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -35,10 +35,13 @@
     "@babel/plugin-transform-typescript": "^7.16.1",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/express": "^4.17.13",
     "@types/node": "^16.11.11",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
-    "chalk": "^4.1.1",
+    "chalk": "^5.0.0",
     "concurrently": "^6.4.0",
     "copy-webpack-plugin": "^10.0.0",
     "critical": "^4.0.1",
@@ -51,8 +54,8 @@
     "postcss": "^8.4.4",
     "postcss-cli": "^9.0.2",
     "postcss-loader": "^6.2.1",
-    "resolve-url-loader": "^4.0.0",
     "rimraf": "^3.0.2",
+    "rollup": "^2.60.2",
     "sass": "^1.44.0",
     "sass-loader": "^12.3.0",
     "sitemap": "^7.0.0",
@@ -64,7 +67,12 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "hbs": "^4.2.0",
-    "tailwindcss": "^2.2.19"
-  }
+    "express-handlebars": "^6.0.2",
+    "tailwindcss": "^2.2.19",
+    "tslib": "^2.3.1"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "type": "module"
 }

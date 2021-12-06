@@ -25,4 +25,4 @@ const config = {
     hostname: 'https://example.com'
 };
 
-module.exports = config;
+export default config;

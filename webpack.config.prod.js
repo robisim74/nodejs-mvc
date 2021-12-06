@@ -1,19 +1,22 @@
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const config = require('./config');
-const {
+import config from './config.js';
+import {
     getEntry,
     MultipleHtmlWebpackPlugin,
     getAssets
-} = require('./scripts/utils');
+} from './scripts/utils.js';
 
 // Naming
 const FILENAME = `[name].[fullhash]`;
 
-module.exports = {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
     mode: 'production',
     context: path.resolve(__dirname, 'src'),
     entry: getEntry(config.entries),
@@ -64,11 +67,7 @@ module.exports = {
                         loader: 'postcss-loader' // Autoprefixer
                     },
                     {
-                        loader: "resolve-url-loader",
-                        options: { sourceMap: true } // source-maps required for loaders preceding resolve-url-loader
-                    },
-                    {
-                        loader: "sass-loader",
+                        loader: 'sass-loader',
                         options: { sourceMap: true }
                     }
                 ]

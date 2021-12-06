@@ -6,8 +6,10 @@
 
 * _Express_ & MVC pattern
 * _Handlebars_ view engine
-* _Babel_ & _webpack_ with dev server
+* _Babel_ & _webpack_ to build the client & live reload
+* _Rollup_ to build the Express app
 * _TypeScript_ & ES6
+* ES modules
 * CSS, _SASS_ & _Autoprefixer_
 * Critical CSS
 * _Tailwind_
@@ -24,7 +26,7 @@
 Download the code & configure the project in `config.js` file.
 
 ### Installation
-_Node.js_ 12 or higher is required.
+_Node.js_ 16 or higher is required.
 
 ```Shell
 npm install
@@ -60,10 +62,11 @@ npm run build
     - **babel.config.js** _Babel_ configuration
     - **webpack.config.dev.js** _webpack_ configuration for development
     - **webpack.config.prod.js** _webpack_ configuration for building client bundles
+    - **rollup.config.js** _Rollup_ configuration for building the Express app
     - **.browserslistrc** target browsers for _Autoprefixer_
     - **postcss.config.js** _PostCSS_ configuration file to use _Autoprefixer_ & _Tailwind_
     - **tailwind.config.js** _Tailwind_ configuration
-    - **tsconfig** _TypeScript_ configuration file to compile Express
+    - **tsconfig** _TypeScript_ configuration file
     - **package.json** _npm_ options & scripts
 
 

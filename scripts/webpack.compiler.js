@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+import webpack from 'webpack';
 
 /**
  * Wrapper for webpack compiler
@@ -21,4 +21,4 @@ const webpackCompiler = async (webpackConfig) => {
     });
 };
 
-module.exports = webpackCompiler;
+export default webpackCompiler;

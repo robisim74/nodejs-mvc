@@ -1,13 +1,16 @@
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const NodemonPlugin = require('nodemon-webpack-plugin');
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import NodemonPlugin from 'nodemon-webpack-plugin';
 
-const config = require('./config');
-const { getEntry, MultipleHtmlWebpackPlugin, getAssets } = require('./scripts/utils');
+import config from './config.js';
+import { getEntry, MultipleHtmlWebpackPlugin, getAssets } from './scripts/utils.js';
 
-module.exports = {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
     mode: 'development',
     target: 'web',
     devtool: 'source-map',
@@ -37,8 +40,7 @@ module.exports = {
         // Start nodemon
         new NodemonPlugin({
             script: `./${config.buildDir}/app.js`,
-            watch: 'src',
-            ext: 'ts'
+            watch: path.resolve(`./${config.buildDir}/app.js`)
         })
     ],
     module: {
@@ -68,18 +70,14 @@ module.exports = {
                         loader: 'postcss-loader' // Autoprefixer
                     },
                     {
-                        loader: "resolve-url-loader",
-                        options: { sourceMap: true } // source-maps required for loaders preceding resolve-url-loader
-                    },
-                    {
-                        loader: "sass-loader",
+                        loader: 'sass-loader',
                         options: { sourceMap: true }
                     }
                 ]
             },
             {
                 test: /\.(png|svg|jpe?g|gif)$/i,
-                type: 'asset/resource'
+                type: 'asset/inline'
             },
             {
                 test: /\.eot$|\.woff$|\.woff2$|\.ttf$/,
@@ -93,7 +91,14 @@ module.exports = {
         entrypoints: false
     },
     devServer: {
-        hot: true,
+        // Live reload for all files
+        hot: false,
+        watchFiles: {
+            paths: ['src/**/*'],
+            options: {
+                awaitWriteFinish: true
+            }
+        },
         proxy: {
             '': 'http://localhost:8080', // content base
         },

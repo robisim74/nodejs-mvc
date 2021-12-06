@@ -1,14 +1,15 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
+
+import critical from 'critical';
+import { createWriteStream } from 'fs';
+import { SitemapStream } from 'sitemap';
+
+import webpackCompiler from './scripts/webpack.compiler.js';
+import webpackConfig from './webpack.config.prod.js';
+import config from './config.js';
+import { getHtmlSourceFiles, getPaths } from './scripts/utils.js';
+
 const log = console.log;
-
-const critical = require('critical');
-const { createWriteStream } = require('fs');
-const { SitemapStream } = require('sitemap');
-
-const webpackCompiler = require('./scripts/webpack.compiler');
-const webpackConfig = require('./webpack.config.prod');
-const config = require('./config');
-const { getHtmlSourceFiles, getPaths } = require('./scripts/utils');
 
 async function build() {
     log(chalk.blue('Start building...'));

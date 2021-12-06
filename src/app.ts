@@ -1,15 +1,21 @@
 import express, { Application } from 'express';
+import { engine } from 'express-handlebars';
 import http from 'http';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-import * as appController from './app.controller';
+import { index } from './app.controller';
 
 const app: Application = express();
 const server = http.createServer(app);
 
-// Set the view engine to hbs
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Set the view engine to handlebars using html extension
+app.engine('html', engine(
+	{ extname: '.html', defaultLayout: undefined }
+));
 app.set('view engine', 'html');
-app.engine('html', require('hbs').__express);
 app.set('views', path.resolve(__dirname, 'views'));
 
 // Static assets
@@ -18,7 +24,7 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 /**
  * Primary app routes
  */
-app.get("/", appController.index);
+app.get('/', index);
 
 const PORT = 8080;
 server.listen(PORT);

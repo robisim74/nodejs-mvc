@@ -1,10 +1,13 @@
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const config = require('../config');
+import config from '../config.js';
 
-const getEntry = (entries) => {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export const getEntry = (entries) => {
     const entry = {};
     for (const value of entries) {
         entry[value.name] = [value.module, value.style];
@@ -12,7 +15,7 @@ const getEntry = (entries) => {
     return entry;
 };
 
-const MultipleHtmlWebpackPlugin = (entries, baseHref = '/') => {
+export const MultipleHtmlWebpackPlugin = (entries, baseHref = '/') => {
     return entries.map(value =>
         new HtmlWebpackPlugin({
             filename: path.resolve(__dirname, `../${config.buildDir}/${value.template}`),
@@ -24,31 +27,23 @@ const MultipleHtmlWebpackPlugin = (entries, baseHref = '/') => {
     );
 };
 
-const getHtmlSourceFiles = (entries) => {
+export const getHtmlSourceFiles = (entries) => {
     return entries.map(value =>
         value.template
     );
 };
 
-const getPaths = (entries) => {
+export const getPaths = (entries) => {
     return entries.filter(value => value.path != undefined).map(value =>
         value.path
     );
 };
 
-const getAssets = (assets) => {
+export const getAssets = (assets) => {
     return assets.map(asset => {
         return {
             from: path.resolve(__dirname, `../src/${asset}`),
-            to:  path.resolve(__dirname, `../${config.buildDir}/public/${asset}`),
+            to: path.resolve(__dirname, `../${config.buildDir}/public/${asset}`),
         };
     });
-};
-
-module.exports = {
-    getEntry,
-    MultipleHtmlWebpackPlugin,
-    getHtmlSourceFiles,
-    getPaths,
-    getAssets
 };
