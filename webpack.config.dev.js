@@ -91,8 +91,8 @@ export default {
         entrypoints: false
     },
     devServer: {
+        hot: true,
         // Live reload for all files
-        hot: false,
         watchFiles: {
             paths: ['src/**/*'],
             options: {
@@ -100,11 +100,11 @@ export default {
             }
         },
         proxy: {
-            '': 'http://localhost:8080', // content base
+            '/index': 'http://localhost:8080', // content base
         },
         port: 3000,
         devMiddleware: {
             writeToDisk: true, // for express
-        },
+        }
     },
 };
