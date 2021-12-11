@@ -6,7 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import NodemonPlugin from 'nodemon-webpack-plugin';
 
 import config from './config.js';
-import { getEntry, MultipleHtmlWebpackPlugin, getAssets } from './scripts/utils.js';
+import { getEntry, MultipleHtmlWebpackPlugin, getAssets, getPartials } from './scripts/utils.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -30,7 +30,8 @@ export default {
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                ...getAssets(config.assets)
+                ...getAssets(config.assets),
+                ...getPartials()
             ]
         }),
         ...MultipleHtmlWebpackPlugin(config.entries),

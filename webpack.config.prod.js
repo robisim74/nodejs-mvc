@@ -8,7 +8,8 @@ import config from './config.js';
 import {
     getEntry,
     MultipleHtmlWebpackPlugin,
-    getAssets
+    getAssets,
+    getPartials
 } from './scripts/utils.js';
 
 // Naming
@@ -38,7 +39,8 @@ export default {
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                ...getAssets(config.assets)
+                ...getAssets(config.assets),
+                ...getPartials()
             ]
         }),
         ...MultipleHtmlWebpackPlugin(config.entries, config.baseHref),
@@ -60,15 +62,13 @@ export default {
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
-                        loader: 'css-loader',
-                        options: { sourceMap: true }
+                        loader: 'css-loader'
                     },
                     {
                         loader: 'postcss-loader' // Autoprefixer
                     },
                     {
-                        loader: 'sass-loader',
-                        options: { sourceMap: true }
+                        loader: 'sass-loader'
                     }
                 ]
             },

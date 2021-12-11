@@ -28,9 +28,9 @@ export const MultipleHtmlWebpackPlugin = (entries, baseHref = '/') => {
 };
 
 export const getHtmlSourceFiles = (entries) => {
-    return entries.map(value =>
-        value.template
-    );
+    return entries.map(value => {
+        return { template: value.template, path: value.path };
+    });
 };
 
 export const getPaths = (entries) => {
@@ -46,4 +46,11 @@ export const getAssets = (assets) => {
             to: path.resolve(__dirname, `../${config.buildDir}/public/${asset}`),
         };
     });
+};
+
+export const getPartials = () => {
+    return [{
+        from: path.resolve(__dirname, `../src/views/partials`),
+        to: path.resolve(__dirname, `../${config.buildDir}/views/partials`),
+    }];
 };

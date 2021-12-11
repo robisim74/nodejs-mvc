@@ -1,14 +1,15 @@
 # Node.js MVC
 ![Node.js CI](https://github.com/robisim74/nodejs-mvc/workflows/Node.js%20CI/badge.svg)
-> Build a Node.js MVC web app with Webpack, Babel, TypeScript or ES6, critical CSS. SEO & performance friendly
+> Build a Node.js MVC web app with Webpack, Babel, TypeScript or ES, critical CSS. SEO & performance friendly
 
 ## Features
 
 * _Express_ & MVC pattern
-* _Handlebars_ view engine
+* _Handlebars_ view engine & partial views
+* _Helmet_ for security
 * _Babel_ & _webpack_ to build the client & live reload
 * _Rollup_ to build the Express app
-* _TypeScript_ & ES6
+* _TypeScript_ & ES
 * ES modules
 * CSS, _SASS_ & _Autoprefixer_
 * Critical CSS
@@ -55,6 +56,7 @@ npm run build
     
 - Scripts & configuration files
     - **build.js** building process
+        - runs _Rollup_ to build the app
         - runs _webpack_ to generate client bundles
         - runs _critical_ to inline critical CSS
         - runs _sitemap_ to generate `sitemap.xml`
