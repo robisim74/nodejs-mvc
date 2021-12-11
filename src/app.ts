@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import { engine } from 'express-handlebars';
+import helmet from 'helmet';
 import http from 'http';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -10,6 +11,7 @@ const app: Application = express();
 const server = http.createServer(app);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const environment = process.env.NODE_ENV;
 
 // Set the view engine to handlebars using html extension
 app.engine('html', engine(
@@ -20,6 +22,15 @@ app.set('views', path.resolve(__dirname, 'views'));
 
 // Static assets
 app.use(express.static(path.resolve(__dirname, 'public')))
+// Security
+app.use(
+	helmet.contentSecurityPolicy({
+		useDefaults: true,
+		directives: {
+			'connect-src': environment === 'production' ? ["'self'"] : ["'self' ws://localhost:3000"]
+		},
+	})
+);
 
 /**
  * Primary app routes

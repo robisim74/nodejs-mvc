@@ -7,6 +7,7 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 const externals = [
     'express',
     'express-handlebars',
+    'helmet',
     'url'
 ];
 

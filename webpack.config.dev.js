@@ -91,6 +91,7 @@ export default {
         entrypoints: false
     },
     devServer: {
+        open: ['http://localhost:8080'],
         hot: true,
         // Live reload for all files
         watchFiles: {

@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "Build a Node.js MVC web app with Webpack, Babel, TypeScript or ES6, critical CSS",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "cross-env NODE_ENV=production node dist/app.js",
     "dev": "rimraf dist && npm run build:watch",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c rollup.config.js && cross-env NODE_ENV=production node build.js",
     "build:watch": "concurrently \"rollup -c rollup.config.js -w\" \"webpack serve --config webpack.config.dev.js\"",
@@ -68,6 +68,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^6.0.2",
+    "helmet": "^4.6.0",
     "tailwindcss": "^3.0.0",
     "tslib": "^2.3.1"
   },

@@ -23,7 +23,9 @@ async function build() {
     log(chalk.blue('\nGenerate critical css'));
     for (const source of getHtmlSourceFiles(config.entries)) {
         critical.generate({
-            inline: true,
+            inline: {
+                strategy: 'body' // for CSP
+            },
             base: `${config.buildDir}/public/`,
             src: `../${source}`,
             target: {
