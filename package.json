@@ -1,12 +1,12 @@
 {
   "name": "nodejs-mvc",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Build a Node.js MVC web app with Webpack, Babel, TypeScript or ES, critical CSS",
   "scripts": {
     "start": "cross-env NODE_ENV=production node dist/app.js",
     "dev": "rimraf dist && npm run build:watch",
     "build": "rimraf dist && cross-env NODE_ENV=production node build.js",
-    "build:watch": "concurrently \"rollup -c rollup.config.js -w\" \"webpack serve --config webpack.config.dev.js\"",
+    "build:watch": "concurrently \"rollup -c rollup.config.js -w\" \"cross-env TAILWIND_MODE=watch webpack serve --config webpack.config.dev.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

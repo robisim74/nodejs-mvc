@@ -15,6 +15,15 @@ export const getEntry = (entries) => {
     return entry;
 };
 
+export const getEntries = (entries) => {
+    const files = [];
+    for (const value of entries) {
+        files.push(path.join('src', value.module));
+        files.push(path.join('src', value.style));
+    }
+    return files;
+};
+
 export const MultipleHtmlWebpackPlugin = (entries, baseHref = '/') => {
     return entries.map(value =>
         new HtmlWebpackPlugin({

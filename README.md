@@ -7,13 +7,14 @@
 * _Express_ & MVC pattern
 * _Handlebars_ view engine & partial views
 * _Helmet_ for security
-* _Babel_ & _webpack_ to build the client & live reload
+* _Babel_ & _webpack_ to build the client
 * _Rollup_ to build the Express app
 * _TypeScript_ & ES
-* ES modules
-* CSS, _SASS_ & _Autoprefixer_
-* Critical CSS
 * _Tailwind_
+* CSS, _SASS_ with _Autoprefixer_
+* Critical CSS
+* HMR & Live reload
+* ES modules
 * Sitemap
 
 

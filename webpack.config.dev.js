@@ -6,7 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import NodemonPlugin from 'nodemon-webpack-plugin';
 
 import config from './config.js';
-import { getEntry, MultipleHtmlWebpackPlugin, getAssets, getPartials } from './scripts/utils.js';
+import { getEntry, MultipleHtmlWebpackPlugin, getAssets, getPartials, getEntries } from './scripts/utils.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -94,12 +94,17 @@ export default {
     devServer: {
         open: ['http://localhost:8080'],
         hot: true,
-        // Live reload for all files
+        // Live reload for all other files (html, assets, express app)
+        liveReload: true,
         watchFiles: {
             paths: ['src/**/*'],
             options: {
-                awaitWriteFinish: true
+                ignored: getEntries(config.entries),
+                awaitWriteFinish: true // for express
             }
+        },
+        static: {
+            directory: path.join(__dirname, 'src/assets'),
         },
         proxy: {
             '/index': 'http://localhost:8080', // content base

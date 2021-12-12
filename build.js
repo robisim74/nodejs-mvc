@@ -27,7 +27,7 @@ async function build() {
     shell.echo(chalk.blue('\nGenerate critical css'));
 
     shell.echo(chalk.blue('Start Node.js server for rendering'));
-    shell.exec('pm2 start dist/app.js');
+    shell.exec(`pm2 start ${config.buildDir}/app.js`);
 
     for (const source of getHtmlSourceFiles(config.entries)) {
         const result = await critical.generate({
@@ -46,8 +46,6 @@ async function build() {
         const html = readFileSync(`${config.buildDir}/${source.template}`, 'utf8');
 
         const inlined = inline(html, result.css, {
-            strategy: 'body',
-            extract: true,
             basePath: `${config.buildDir}/public/`
         });
 
@@ -55,11 +53,11 @@ async function build() {
     }
 
     // Stop & delete process
-    shell.exec('pm2 delete dist/app.js');
+    shell.exec(`pm2 delete ${config.buildDir}/app.js`);
 
     // Run sitemap
     // https://github.com/ekalinin/sitemap.js
-    shell.echo(chalk.blue('Generate sitemap'));
+    shell.echo(chalk.blue('\nGenerate sitemap'));
     const sitemap = new SitemapStream({
         hostname: config.hostname,
         lastmodDateOnly: true, // Print date not time
