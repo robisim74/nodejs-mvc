@@ -51,8 +51,9 @@ npm run build
         - **src/app.ts** Express entry point
         - **src/app.controller.ts** controllers file
         - **src/views/** views folder
-        - **src/index.ts** client ts file for `views/index.html`
-        - **src/index.scss** client css file for `views/index.html`
+        - **src/routes/** routes folder
+            - **index.ts** client ts file for `views/index.html`
+            - **index.scss** client css file for `views/index.html`
     - **config.js** app configuration
     
 - Scripts & configuration files
@@ -67,8 +68,8 @@ npm run build
     - **webpack.config.prod.js** _webpack_ configuration for building client bundles
     - **rollup.config.js** _Rollup_ configuration for building the Express app
     - **.browserslistrc** target browsers for _Autoprefixer_
-    - **postcss.config.js** _PostCSS_ configuration file to use _Autoprefixer_ & _Tailwind_
-    - **tailwind.config.js** _Tailwind_ configuration
+    - **postcss.config.cjs** _PostCSS_ configuration file to use _Autoprefixer_ & _Tailwind_
+    - **tailwind.config.cjs** _Tailwind_ configuration
     - **tsconfig** _TypeScript_ configuration file
     - **package.json** _npm_ options & scripts
 

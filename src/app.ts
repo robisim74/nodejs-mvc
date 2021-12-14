@@ -1,17 +1,16 @@
 import express, { Application } from 'express';
 import { engine } from 'express-handlebars';
 import helmet from 'helmet';
-import http from 'http';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { index } from './app.controller';
 
 const app: Application = express();
-const server = http.createServer(app);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const environment = process.env.NODE_ENV;
+const port = process.env.PORT || 8080;
 
 // Set the view engine to handlebars using html extension
 app.engine('html', engine(
@@ -37,9 +36,6 @@ app.use(
  */
 app.get('/', index);
 
-const PORT = 8080;
-server.listen(PORT);
-
-server.on('listening', () => {
-	console.info('Listening on http://localhost:' + PORT);
+app.listen(port, () => {
+	console.info(`Server listening on http://localhost:${port}`);
 });

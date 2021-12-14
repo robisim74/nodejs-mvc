@@ -7,7 +7,7 @@ const config = {
      * Entry points as in src folder
      */
     entries: [
-        { name: 'index', template: './views/index.html', module: './index.ts', style: './index.scss', path: '' },
+        { name: 'index', template: './views/index.html', module: './routes/index.ts', style: './routes/index.scss', path: '' },
     ],
     /**
      * Files or directories to copy from src to the build directory
