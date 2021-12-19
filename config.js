@@ -13,7 +13,8 @@ const config = {
      * Files or directories to copy from src to the build directory
      */
     assets: [
-        'assets'
+        'assets',
+        '../entry.cjs'
     ],
     /**
      * Production base href
