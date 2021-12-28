@@ -46,7 +46,8 @@ async function build() {
         const html = readFileSync(`${config.buildDir}/${source.template}`, 'utf8');
 
         const inlined = inline(html, result.css, {
-            basePath: `${config.buildDir}/public/`
+            basePath: `${config.buildDir}/public/`,
+            extract: true
         });
 
         writeFileSync(`${config.buildDir}/${source.template}`, inlined);
