@@ -30,6 +30,7 @@ export const MultipleHtmlWebpackPlugin = (entries, baseHref = '/') => {
             filename: path.resolve(__dirname, `../${config.buildDir}/${value.template}`),
             template: path.resolve(__dirname, `../src/${value.template}`),
             favicon: path.resolve(__dirname, '../src/favicon.ico'),
+            chunks: [value.name],
             base: baseHref,
             minify: false
         })
