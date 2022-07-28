@@ -6,12 +6,10 @@
                 "targets": {
                     "esmodules": true
                 }
-            },
-            "@babel/preset-typescript"
-        ]
+            }
+        ],
+        "@babel/preset-typescript"
     ],
     "plugins": [
-        "@babel/plugin-transform-typescript",
-        "@babel/plugin-syntax-dynamic-import"
     ]
 }
